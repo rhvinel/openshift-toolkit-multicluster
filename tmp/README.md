@@ -1,14 +1,3 @@
-# openshift-toolkit-multi-cluster
-
-The aim of this project is to define the technical tools and content (Platform, Manifests & presentations) needed to deliver the "OPP" (Red Hat OpenShift Platform Plus) offering in GitOps mode.
-
-
-
-
-
-
----------------
-
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.

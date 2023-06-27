@@ -1,0 +1,11 @@
+# Web Terminal
+webterminal:
+  include: true
+
+# Indentit Pprovider Httpasswd
+indentityprovider:
+  include: true
+
+# exemple application
+helloworld:
+  include: true

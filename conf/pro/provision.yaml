@@ -1,0 +1,20 @@
+# Provision cluster
+
+masters:
+    count: 3
+    # cpus: 4
+    # coresPerSocket: 2
+    # memoryMB: 16384
+    # diskGB: 40
+
+workers:
+    # skipMachinePools=true for single node only
+    skipMachinePools: false
+    count: 2
+    # cpus: 4
+    # coresPerSocket: 2
+    # memoryMB: 16384
+    # diskGB: 40
+
+
+

@@ -1,0 +1,21 @@
+apiVersion: hive.openshift.io/v1
+kind: MachinePool
+metadata:
+  annotations:
+    helm.sh/hook-weight: "360"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous        
+  name: {{ .Values.cluster.name }}-worker
+  namespace: {{ .Values.cluster.name }}
+spec:
+  name: worker
+  clusterDeploymentRef:
+    name: {{ .Values.cluster.name }}
+  platform:
+    aws:
+      rootVolume:
+        iops: 2000
+        size: 100
+        type: io1
+      type: m5.xlarge
+  replicas: {{ .Values.workers.count }}
+  skipMachinePools: {{ .Values.workers.skipMachinePools }}

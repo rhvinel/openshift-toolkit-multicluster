@@ -1,0 +1,28 @@
+{{- if .Values.helloworld.include -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-configmap
+  namespace: hello-world
+  labels:
+    app.kubernetes.io/instance: hello-world
+data:
+  "index.html": |-
+    <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Hello World</title>
+        </head>
+          <body>
+            <h1>Hello World!</h1>
+            <br/>
+            <h2>
+            Hub Cluster domain is '{{ .Values.cluster.baseDomain }}' <br>
+            Pod is running on Local Cluster Domain '{{ .Values.cluster.name }}' <br>
+            </h2>
+          </body>
+      </html>
+
+{{- end }}
