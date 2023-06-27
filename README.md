@@ -1,6 +1,6 @@
 # openshift-toolkit-multi-cluster
 
-
+The aim of this project is to define the technical tools and content (Platform, Manifests & presentations) needed to deliver the "OPP" (Red Hat OpenShift Platform Plus) offering in GitOps mode.
 
 
 
