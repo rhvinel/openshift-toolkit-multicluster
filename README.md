@@ -1,4 +1,3 @@
-
 # Openshift Toolkit for Multi-cluster Deployment with GitOps
 
 The aim of this project is to define the technical tools and content (Platform, Manifests & presentations) needed to deliver the "OPP" (Red Hat OpenShift Platform Plus) offering in GitOps mode.
@@ -20,10 +19,10 @@ ssh $BASTION
 ```
 
 ## On Git update conf.yam and provision.yaml
-* Search and Repplace sandbox-xxx by sandbox-YYY
+* Search and Repplace sandbox{uid-old} by sandbox{uid-new}
 
 ## On Git update cluster name folder
-* Search and Repplace sandbox- xxx> by sandbox<YYY>
+* Search and Repplace sandbox{uid-old} by sandbox{uid-new}
 
 ## On Git update sealedsecret-aws.yaml
 
@@ -102,4 +101,4 @@ until oc apply -k https://gitlab.consulting.redhat.com/lcolagio/openshift-toolki
 ```
 
 ## Add clusters for test
-* move /tmp/<env>/ocp<x>.sandbox<xxx>.opentlc.com to /clusters/<env>
+* move /tmp/{env}/ocp{n}.sandbox{uid}.opentlc.com to /clusters/{env}
