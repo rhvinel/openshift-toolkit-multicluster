@@ -10,6 +10,6 @@ spec:
   source:
     path: clusters/acm-hub.redhat.com
     repoURL: >-
-      https://github.com/lcolagio/gitops-for-organizations-aws.git
+      https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster.git
     targetRevision: main
   syncPolicy: {}
