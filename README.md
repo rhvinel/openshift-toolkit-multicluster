@@ -11,6 +11,9 @@ The aim of this project is to define the technical tools and content (Platform, 
 export BASTION=lab-user@bastion.grjm6.sandbox1844.opentlc.com
 scp $HOME/.ssh/sealed-secrets-from-gitops.* $BASTION:/home/lab-user
 ```
+... sealed-secrets-from-gitops.key
+... sealed-secrets-from-gitops.crt
+... sealed-secrets-from-gitops
 
 ## Connect to Bastion and generate SealedSecret for Cloud provider AWS
 
