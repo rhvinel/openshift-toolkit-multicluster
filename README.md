@@ -15,8 +15,6 @@ scp $HOME/.ssh/sealed-secrets-from-gitops.* $BASTION:/home/lab-user
 
 ... sealed-secrets-from-gitops.crt
 
-... sealed-secrets-from-gitops
-
 
 ## Connect to Bastion and generate SealedSecret for Cloud provider AWS
 
@@ -24,15 +22,21 @@ scp $HOME/.ssh/sealed-secrets-from-gitops.* $BASTION:/home/lab-user
 ssh $BASTION
 ```
 
-## On Git update conf.yam and provision.yaml
+## On Git, update cluster name folder
 * Search and Repplace sandbox{uid-old} by sandbox{uid-new}
 
-## On Git update cluster name folder
+## On Git, update conf.yaml and provision.yaml
 * Search and Repplace sandbox{uid-old} by sandbox{uid-new}
 
-## On Git update sealedsecret-xxx.yaml
+## On Git, update repoURL with your own repo for all application and applicationset.
+* /clusters/acm-hub.redhat.com/applications/app-argocd.yaml
+* /clusters/acm-hub.redhat.com/applications/cluster-config.yaml
+* /clusters/acm-hub.redhat.com/applications/cluster-config-overlays.yaml
+* /clusters/acm-hub.redhat.com/applications/cluster-provisioning.yaml
 
+## On Git update sealedsecret-*.yaml
 * Generate SealedSecret for aws credential
+
 ```shell
 
 ## Install tools and Cli
