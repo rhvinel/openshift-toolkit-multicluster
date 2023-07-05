@@ -30,7 +30,7 @@ ssh $BASTION
 ## On Git update cluster name folder
 * Search and Repplace sandbox{uid-old} by sandbox{uid-new}
 
-## On Git update sealedsecret-aws.yaml
+## On Git update sealedsecret-xxx.yaml
 
 * Generate SealedSecret for aws credential
 ```shell
@@ -56,7 +56,7 @@ sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 kubeseal --version
 ```
 
-* Encrypt with sealed-Secret
+* Encrypt with sealed-Secret your aws-creds, Pull-secret and private-key
 
 ```shell
 SECRET=aws-creds-secret
@@ -76,9 +76,49 @@ EOF
 kubeseal --cert "./${PUBLICKEY}" --scope cluster-wide < xxx-aws-creds-secret.yaml >xxx-aws-creds-sealed-secret.json
 yq  xxx-aws-creds-sealed-secret.json -oy > xxx-aws-creds-sealed-secret.yaml
 cat xxx-aws-creds-sealed-secret.yaml
+
+SECRET=pull-secret
+
+cat << EOF >${SECRET}.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${SECRET}
+  annotations:
+    helm.sh/hook-weight: "355"
+  namespace: xxx
+stringData:
+  .dockerconfigjson: xxx
+type: kubernetes.io/dockerconfigjson
+EOF
+
+kubeseal --cert "./${PUBLICKEY}" --scope cluster-wide < ${SECRET}.yaml >${SECRET}.json
+yq  ${SECRET}.json -oy > ${SECRET}.yaml
+cat ${SECRET}.yaml
+
+cat << EOF >xxx-ssh-private-key.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: xxx-ssh-private-key
+  namespace: xxx
+stringData:
+  ssh-privatekey: |-
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    xxx
+    -----END OPENSSH PRIVATE KEY-----
+type: Opaque
+EOF
+
+kubeseal --cert "./${PUBLICKEY}" --scope cluster-wide < xxx-ssh-private-key.yaml >xxx-ssh-private-key-sealed-secret.json
+yq  xxx-ssh-private-key-sealed-secret.json -oy > xxx-ssh-private-key-sealed-secret.yaml
+cat xxx-ssh-private-key-sealed-secret.yaml
 ```
 
-* Update encryptedData in sealedsecret-aws.yaml
+* in folder /base/provision/openshift-provisionning/templates
+ * Update spec encryptedData in sealedsecret-aws.yaml
+ * Update spec encryptedData in sealedsecret-pull-secret.yaml
+ * Update spec encryptedData in sealedsecret-ssh-private-key.yaml
 
 ```shell
   encryptedData:
@@ -86,7 +126,7 @@ cat xxx-aws-creds-sealed-secret.yaml
     aws_secret_access_key: xxx
 ```
 
-## Update sealed secrets key
+## Update sealed-secrets operator primary key
 
 ```shell
 export NAMESPACE="sealed-secrets"
@@ -106,5 +146,5 @@ kubectl -n "$NAMESPACE" label secret "$SECRETNAME" sealedsecrets.bitnami.com/sea
 until oc apply -k https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster/bootstrap/overlays/default/; do sleep 5; done
 ```
 
-## Add clusters for test
+## To test the deployment of a managed cluster, copy a template from: /tmp/{env}/ to /clusters/{env}/:
 * move /tmp/{env}/ocp{n}.sandbox{uid}.opentlc.com to /clusters/{env}
