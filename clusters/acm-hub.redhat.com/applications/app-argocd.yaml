@@ -10,6 +10,6 @@ spec:
   source:
     path: clusters/acm-hub.redhat.com
     repoURL: >-
-      https://gitlab.consulting.redhat.com/evinel/openshift-toolkit-multicluster.git
+      https://github.com/rhvinel/openshift-toolkit-multicluster.git
     targetRevision: main
   syncPolicy: {}
