@@ -52,7 +52,7 @@ chmod +x helm
 sudo mv helm /usr/bin/helm
 helm version
 
-version=0.19.1
+version=0.24.0
 wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v${version}/kubeseal-${version}-linux-amd64.tar.gz
 tar xfz kubeseal-${version}-linux-amd64.tar.gz
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal

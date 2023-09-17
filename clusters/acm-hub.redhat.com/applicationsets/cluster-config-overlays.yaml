@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster.git
+      repoURL: https://gitlab.consulting.redhat.com/evinel/openshift-toolkit-multicluster.git
       revision: main
       files:
         - path: "clusters/**/conf.yaml"
@@ -21,7 +21,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster.git
+        repoURL: https://gitlab.consulting.redhat.com/evinel/openshift-toolkit-multicluster.git
         targetRevision: main
         path: clusters/{{cluster.environment}}/{{cluster.fqdn}}/overlay
       destination:

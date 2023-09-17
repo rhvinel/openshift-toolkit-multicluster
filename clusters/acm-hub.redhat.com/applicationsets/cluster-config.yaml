@@ -8,7 +8,7 @@ spec:
     - matrix:
         generators:
           - git:
-              repoURL: https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster.git
+              repoURL: https://gitlab.consulting.redhat.com/evinel/openshift-toolkit-multicluster.git
               revision: main
               files:
                 - path: "clusters/**/conf.yaml"
@@ -47,7 +47,7 @@ spec:
       #   - /spec/installed   
       project: default
       source:
-        repoURL: https://gitlab.consulting.redhat.com/lcolagio/openshift-toolkit-multicluster.git
+        repoURL: https://gitlab.consulting.redhat.com/evinel/openshift-toolkit-multicluster.git
         targetRevision: main
         path: base/config/{{template}}
         helm:

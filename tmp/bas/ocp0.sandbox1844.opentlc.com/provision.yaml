@@ -2,8 +2,8 @@
 
 cluster:
   name: ocp0
-  baseDomain: sandbox1844.opentlc.com
-  fqdn: ocp0.sandbox1844.opentlc.com
+  baseDomain: sandbox1118.opentlc.com
+  fqdn: ocp0.sandbox1118.opentlc.com
   environment: bas
   datacenter: us
   cloud: AWS
